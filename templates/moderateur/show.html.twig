@@ -1,0 +1,21 @@
+{% extends 'admin/index.html.twig' %}
+{% use "bootstrap_4_layout.html.twig" %}
+
+
+{% block title %}Moderateur{% endblock %}
+
+{% block body %}
+    <h1>Moderateur</h1>
+
+    <table class="table">
+        <tbody>
+            
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_moderateur_index') }}">back to list</a>
+
+    <a href="{{ path('app_moderateur_edit', {'idModerateur': moderateur.idModerateur}) }}">edit</a>
+
+    {{ include('moderateur/_delete_form.html.twig') }}
+{% endblock %}

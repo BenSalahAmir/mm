@@ -1,0 +1,47 @@
+{% extends 'admin/index.html.twig' %}
+{% use "bootstrap_4_layout.html.twig" %}
+
+
+{% block title %}Moderateur index{% endblock %}
+
+{% block body %}
+    <h1>Moderateur index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prenom</th>
+                {#<th>Datenaissance</th>#}
+                <th>Email</th>
+                <th>Telephone</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for moderateur in moderateurs %}
+            <tr>
+               
+                <td>{{ moderateur.idModerateur.nom }}</td>
+                <td>{{ moderateur.idModerateur.prenom }}</td>
+                {#<td>{{ moderateur.idModerateur.datenaissance ? moderateur.datenaissance|date('Y-m-d') : '' }}</td>#}
+                <td>{{ moderateur.idModerateur.email }}</td>
+                <td>{{ moderateur.idModerateur.telephone }}</td>
+               
+                <td>
+                    <a class="btn btn-outline-danger" href="{{ path('app_moderateur_delete', {'idModerateur': moderateur.idModerateur.idpersonne}) }}">delete</a>
+                    <a class="btn btn-outline-primary" href="{{ path('app_moderateur_edit', {'idModerateur': moderateur.idModerateur.idpersonne}) }}">edit</a>
+                    
+
+                </td>
+                
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="1">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+<a class="btn btn-outline-warning" href="{{ path('app_moderateur_new') }}">Create new</a>
+{% endblock %}

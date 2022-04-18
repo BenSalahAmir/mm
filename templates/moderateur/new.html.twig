@@ -1,0 +1,16 @@
+{% extends 'admin/index.html.twig' %}
+{% use "bootstrap_4_layout.html.twig" %}
+
+{% block title %}New Moderateur{% endblock %}
+
+{% block body %}
+    <h1>Create new Moderateur</h1>
+    
+{{form_start(form,{'attr':{'novalidate':'novalidate'}})}}
+{{form_widget(form)}}
+    
+    {{ include('moderateur/_form.html.twig') }}
+
+    <a href="{{ path('app_moderateur_index') }}">back to list</a>
+    {{ form_end(form) }}
+{% endblock %}

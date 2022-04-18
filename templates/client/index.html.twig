@@ -1,0 +1,48 @@
+{% extends 'admin/index.html.twig' %}
+{% use "bootstrap_4_layout.html.twig" %}
+
+{% block title %}Client index{% endblock %}
+
+{% block body %}
+    <h1>Client index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                 <th>Nom</th>
+               <th>Prenom</th>
+                <th>email</th>
+                <th>Telephone</th>
+                <th>Nbravertissement</th>
+                <th>Ban</th>
+                <th>Datedebutblock</th>
+                <th>Datefinblock</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for client in clients %}
+            <tr>
+                <td>{{ client.idclient.nom }}</td>
+               <td>{{ client.idclient.prenom }}</td>
+               <td>{{ client.idclient.email }}</td>
+               <td>{{ client.idclient.telephone }}</td>
+                <td>{{ client.nbravertissement }}</td>
+                <td>{{ client.ban }}</td>
+                <td>{{ client.datedebutblock ? client.datedebutblock|date('Y-m-d') : '' }}</td>
+                <td>{{ client.datefinblock ? client.datefinblock|date('Y-m-d') : '' }}</td>
+                <td>
+                  <a class="btn btn-danger" href="{{ path('app_client_show', {'idclient': client.idclient.idpersonne}) }}">Avertir</a>
+                 <a class="btn btn-primary" href="{{ path('app_client_edit', {'idclient': client.idclient.idpersonne}) }}">edit</a>    
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}

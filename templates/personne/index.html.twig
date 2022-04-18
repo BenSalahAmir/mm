@@ -1,0 +1,46 @@
+{% extends 'admin/index.html.twig' %}
+{% use "bootstrap_4_layout.html.twig" %}
+
+{% block title %}Personne index{% endblock %}
+
+{% block body %}
+    <h1>Personne index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Datenaissance</th>
+                <th>Email</th>
+                <th>Telephone</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for personne in personnes %}
+            <tr>
+               
+                <td>{{ personne.nom }}</td>
+                <td>{{ personne.prenom }}</td>
+                <td>{{ personne.datenaissance ? personne.datenaissance|date('Y-m-d') : '' }}</td>
+                <td>{{ personne.email }}</td>
+                <td>{{ personne.telephone }}</td>
+               
+                <td>
+                    <a class="btn btn-primary" href="{{ path('app_personne_show', {'idPersonne': personne.idPersonne}) }}">show</a>
+                    <a class="btn btn-primary" href="{{ path('app_personne_edit', {'idPersonne': personne.idPersonne}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+<center>
+    <a class="btn btn-primary" href="{{ path('app_personne_new') }}">Create new</a>
+    </center>
+{% endblock %}

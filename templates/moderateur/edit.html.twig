@@ -1,0 +1,15 @@
+{% extends 'admin/index.html.twig' %}
+{% use "bootstrap_4_layout.html.twig" %}
+
+
+
+{% block title %}Edit Moderateur{% endblock %}
+
+{% block body %}
+    <h1>Edit Moderateur</h1>
+
+    {{ include('moderateur/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_moderateur_index') }}">back to list</a>
+
+{% endblock %}
